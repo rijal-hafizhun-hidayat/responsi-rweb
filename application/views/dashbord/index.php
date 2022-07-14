@@ -20,6 +20,7 @@
                                 <th scope="col">Nama</th>
                                 <th scope="col">Nomor Hp</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Alamat</th>
                                 <th scope="col">keperluan</th>
                                 <th scope="col">Gambar</th>
                                 <th scope="col">Action</th>
@@ -34,6 +35,7 @@
                                     <td><?php echo $row->nama; ?></td>
                                     <td><?php echo $row->nomor_hp; ?></td>
                                     <td><?php echo $row->email; ?></td>
+                                    <td><?php echo $row->alamat; ?></td>
                                     <td><?php echo $row->keperluan; ?></td>
                                     <td><img width="200px" height="200px" class="img-fluid" src="../../../img/tamu/<?php echo $row->cam; ?>" alt=""></td>
                                     <td>

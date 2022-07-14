@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="col-sm-12">
-                        <form action="<?php echo base_url('sistem/updated/' . $sistem->id); ?>" method="post">
+                        <form action="<?php echo base_url('dashbord/updated/' . $sistem->id); ?>" method="post">
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
