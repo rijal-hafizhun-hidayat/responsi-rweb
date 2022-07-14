@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ModelSistem extends CI_Model
+class ModelDashbord extends CI_Model
 {
     public function show()
     {

@@ -17,23 +17,28 @@ class Tamu extends CI_Controller
     public function insert()
     {
         $cam = $this->input->post('cam');
-        $encode = $this->encodeCam($cam);
-        var_dump($encode);
+        $encodeCam = $this->encodeCam($cam);
         $data = array(
             "nama" => $this->input->post('nama'),
             "nomor_hp" => $this->input->post('nomor_hp'),
             "email" => $this->input->post('email'),
             "keperluan" => $this->input->post('keperluan'),
             "alamat" => $this->input->post('alamat'),
-            "cam" => $cam
+            "cam" => $encodeCam
         );
+
+        $insert = $this->ModelTamu->save($data);
+        if ($insert) {
+            return redirect(base_url(''));
+        }
     }
 
     public function encodeCam($cam)
     {
         $binary_data = base64_decode($cam);
         $fileName = uniqid() . '.jpg';
-        $result = file_put_contents($fileName, $binary_data);
+        $path = FCPATH . 'application/private/tamu/' . $fileName;
+        $result = file_put_contents($path, $binary_data);
 
         if ($result) {
             return $fileName;
