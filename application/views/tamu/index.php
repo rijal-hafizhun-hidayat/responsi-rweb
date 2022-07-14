@@ -11,12 +11,12 @@
 
 <body>
     <div class="container">
-        <div class="row diff-row">
-            <p class="text-center">BUKU TAMU</p>
-            <div class="card">
-                <div class="card-body">
-                    <div class="col-sm-12">
-                        <form action="<?php echo base_url('tamu/insert'); ?>" method="post">
+        <p class="text-center">BUKU TAMU</p>
+        <div class="card">
+            <div class="card-body">
+                <form action="<?php echo base_url('tamu/insert'); ?>" method="post">
+                    <div class="row">
+                        <div class="col-sm-6">
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
@@ -47,21 +47,75 @@
                                     <textarea class="form-control" name="alamat" rows="3"></textarea>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Primary</button>
-                        </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="camera">Capture</div>
+                            <div id="webcam">
+                                <input type=button class="btn btn-warning mt-4" value="Capture" onClick="preview()">
+                            </div>
+                            <div id="simpan" style="display: none;">
+                                <input type=button class="btn btn-danger mt-4" value="Remove" onClick="batal()">
+                                <input type="hidden" value="" name="cam" id="cam">
+                                <input type=submit name="kirim" class="btn btn-primary mt-4" value="Submit All Data" onClick="simpan()">
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
-
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="../../../assets/webcam/webcam.min.js"></script>
     <script>
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : evt.keyCode
             if (charCode > 31 && (charCode < 48 || charCode > 57))
                 return false;
             return true;
+        }
+        // konfigursi webcam
+        Webcam.set({
+            width: 320,
+            height: 240,
+            image_format: 'jpg',
+            jpeg_quality: 100
+        });
+        Webcam.attach('#camera');
+
+        function preview() {
+            // untuk preview gambar sebelum di upload
+            Webcam.freeze();
+            // ganti display webcam menjadi none dan simpan menjadi terlihat
+            document.getElementById('webcam').style.display = 'none';
+            document.getElementById('simpan').style.display = '';
+        }
+
+        function batal() {
+            // batal preview
+            Webcam.unfreeze();
+
+            // ganti display webcam dan simpan seperti semula
+            document.getElementById('webcam').style.display = '';
+            document.getElementById('simpan').style.display = 'none';
+        }
+
+        function simpan() {
+            // ambil foto
+            Webcam.snap(function(data_uri) {
+                var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+                let val = document.getElementById("cam").value = raw_image_data;
+                console.log(val);
+
+                // tampilkan hasil gambar yang telah di ambil
+                document.getElementById('hasil').innerHTML =
+                    '<p>Hasil : </p>' +
+                    '<img src="' + data_uri + '"/>';
+
+                Webcam.unfreeze();
+
+                document.getElementById('webcam').style.display = '';
+                document.getElementById('simpan').style.display = 'none';
+            });
         }
     </script>
 </body>
