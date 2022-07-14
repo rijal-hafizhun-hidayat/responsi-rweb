@@ -17,9 +17,16 @@ class Dashbord extends CI_Controller
 
     public function destroy($id)
     {
-        $model = $this->ModelDashbord->destroy($id);
-        if ($model) {
-            return redirect(base_url('dashbord'));
+        $deletePhoto = $this->destroyPhoto($id);
+        if ($deletePhoto) {
+            $model = $this->ModelDashbord->destroy($id);
+            if ($model) {
+                return redirect(base_url('dashbord'));
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 
@@ -42,6 +49,18 @@ class Dashbord extends CI_Controller
         $update = $this->ModelDashbord->updatedById($data, $id);
         if ($update) {
             return redirect(base_url('dashbord'));
+        }
+    }
+
+    public function destroyPhoto($id)
+    {
+        $data = $this->ModelDashbord->getById($id);
+        $path = FCPATH . 'img/tamu/' . $data->cam;
+        if (file_exists($path)) {
+            unlink($path);
+            return true;
+        } else {
+            return false;
         }
     }
 }

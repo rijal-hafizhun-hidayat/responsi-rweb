@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <p class="text-center">BUKU TAMU</p>
         <div class="card">
             <div class="card-body">

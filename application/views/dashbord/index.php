@@ -21,6 +21,7 @@
                                 <th scope="col">Nomor Hp</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">keperluan</th>
+                                <th scope="col">Gambar</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -34,10 +35,11 @@
                                     <td><?php echo $row->nomor_hp; ?></td>
                                     <td><?php echo $row->email; ?></td>
                                     <td><?php echo $row->keperluan; ?></td>
+                                    <td><img width="200px" height="200px" class="img-fluid" src="../../../img/tamu/<?php echo $row->cam; ?>" alt=""></td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                            <a class="btn btn-danger" href="<?php echo base_url('sistem/destroy/' . $row->id); ?>">Hapus</a>
-                                            <a class="btn btn-warning" href="<?php echo base_url('sistem/show/' . $row->id); ?>">Edit</a>
+                                            <a class="btn btn-danger" href="<?php echo base_url('dashbord/destroy/' . $row->id); ?>">Hapus</a>
+                                            <a class="btn btn-warning" href="<?php echo base_url('dashbord/show/' . $row->id); ?>">Edit</a>
                                         </div>
                                     </td>
                                 </tr>

@@ -37,7 +37,7 @@ class Tamu extends CI_Controller
     {
         $binary_data = base64_decode($cam);
         $fileName = uniqid() . '.jpg';
-        $path = FCPATH . 'application/private/tamu/' . $fileName;
+        $path = FCPATH . 'img/tamu/' . $fileName;
         $result = file_put_contents($path, $binary_data);
 
         if ($result) {
