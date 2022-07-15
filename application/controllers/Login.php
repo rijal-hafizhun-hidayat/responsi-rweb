@@ -8,6 +8,7 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model('ModelLogin');
         $this->load->helper('url');
+        $this->load->library('session');
     }
     public function index()
     {
@@ -34,6 +35,13 @@ class Login extends CI_Controller
         $model = $this->ModelLogin->getById($data['username'], $data['password']);
         if ($model) {
             if ($data['username'] === $model->username && $data['password'] === $model->password) {
+                $session = array(
+                    'username'  => $model->username,
+                    'loggedIn' => TRUE
+                );
+
+                $this->session->set_userdata($session);
+
                 return true;
             } else {
                 return false;

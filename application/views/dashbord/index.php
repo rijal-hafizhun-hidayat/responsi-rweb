@@ -9,7 +9,10 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
+        <div class="text-end">
+            <a class="btn btn-danger" href="<?php echo base_url('dashbord/logout') ?>">Log Out</a>
+        </div>
         <div class="row mt-5">
             <div class="card">
                 <div class="card-body">
