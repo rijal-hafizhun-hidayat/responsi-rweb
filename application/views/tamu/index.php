@@ -20,31 +20,31 @@
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama" class="form-control">
+                                    <input type="text" name="nama" class="form-control" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Nomor Hp</label>
                                 <div class="col-sm-10">
-                                    <input type="text" onkeypress="return isNumberKey(event)" name="nomor_hp" class="form-control">
+                                    <input type="text" onkeypress="return isNumberKey(event)" name="nomor_hp" class="form-control" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" name="email" class="form-control">
+                                    <input type="email" name="email" class="form-control" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Keperluan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="keperluan" class="form-control">
+                                    <input type="text" name="keperluan" class="form-control" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Alamat</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" name="alamat" rows="3"></textarea>
+                                    <textarea class="form-control" name="alamat" rows="3" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -118,6 +118,13 @@
             });
         }
     </script>
+    <?php
+    if ($this->session->flashdata('succes')) { ?>
+        <script>
+            alert("berhasil tambah tamu");
+        </script>
+    <?php }
+    ?>
 </body>
 
 </html>

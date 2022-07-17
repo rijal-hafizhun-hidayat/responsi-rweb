@@ -30,6 +30,7 @@ class Tamu extends CI_Controller
 
         $insert = $this->ModelTamu->save($data);
         if ($insert) {
+            $this->session->set_flashdata('succes', true);
             return redirect(base_url(''));
         }
     }
